@@ -1,4 +1,6 @@
-# Fine-tuning for English to Ukrainian translation
+# English to Ukrainian Translation
+
+![REPL Image](./docs/images/en-uk.png)
 
 Train:
 
