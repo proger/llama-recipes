@@ -32,3 +32,11 @@ class custom_dataset:
     file: str = "examples/custom_dataset.py"
     train_split: str = "train"
     test_split: str = "validation"
+
+
+@dataclass
+class opus_paracrawl:
+    dataset: str = "opus_paracrawl"
+    file: str = "src/llama_recipes/datasets/opus_paracrawl.py"
+    train_split: str = "train"
+    test_split: str = "validation"

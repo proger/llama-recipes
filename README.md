@@ -1,3 +1,25 @@
+# Fine-tuning for English to Ukrainian translation
+
+Train:
+
+```
+env/bin/torchrun -m llama_recipes.finetuning  --use_peft --peft_method lora --quantization \
+    --model_name meta-llama/Llama-2-7b-hf --output_dir exp/translate --dataset opus_paracrawl  \
+    --batch_size_training 1 --gradient_accumulation_steps 4 --num_epochs 1 --save_model
+```
+
+Merge the adapter with the model:
+
+```
+env/bin/python ./examples/hf_text_generation_inference/merge_lora_weights.py  meta-llama/Llama-2-7b-hf exp/translate exp/translate.merged
+```
+
+Run web server:
+
+```
+docker run --gpus all --shm-size 1g -p 8080:80 -v $PWD:/src ghcr.io/huggingface/text-generation-inference:latest --model-id /src/exp/translate.merged --num-shard 1
+```
+
 # Llama 2 Fine-tuning / Inference Recipes, Examples and Demo Apps
 
 **[Update Oct. 20, 2023] We have just released a series of Llama 2 demo apps [here](./demo_apps). These apps show how to run Llama 2 locally and in the cloud to chat about data (PDF, DB, or live) and generate video summary.**
