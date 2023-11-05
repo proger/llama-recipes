@@ -7,12 +7,11 @@ from pathlib import Path
 
 import torch
 
-from llama_recipes.datasets import (
-    get_grammar_dataset,
-    get_alpaca_dataset,
-    get_samsum_dataset,
-    get_opus_paracrawl_dataset,
-)
+from llama_recipes.datasets.grammar_dataset.grammar_dataset import get_dataset as get_grammar_dataset
+from llama_recipes.datasets.alpaca_dataset import InstructionDataset as get_alpaca_dataset
+from llama_recipes.datasets.samsum_dataset import get_preprocessed_samsum as get_samsum_dataset
+from llama_recipes.datasets.opus_paracrawl import OpusParacrawl as get_opus_paracrawl_dataset
+from llama_recipes.datasets.ua_gec import UaGec as get_ua_gec_dataset
 
 
 def load_module_from_py_file(py_file: str) -> object:
@@ -56,6 +55,7 @@ DATASET_PREPROC = {
     "samsum_dataset": get_samsum_dataset,
     "custom_dataset": get_custom_dataset,
     "opus_paracrawl": get_opus_paracrawl_dataset,
+    "ua_gec": get_ua_gec_dataset,
 }
 
 

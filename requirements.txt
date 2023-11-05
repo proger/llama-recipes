@@ -13,3 +13,4 @@ sentencepiece
 py7zr
 scipy
 optimum
+ua_gec==2.0.0

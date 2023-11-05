@@ -1,3 +1,14 @@
+# Grammatical and Fluency Error Correction
+
+Train:
+
+```
+env/bin/torchrun -m llama_recipes.finetuning  --use_peft --peft_method lora --quantization \
+    --model_name meta-llama/Llama-2-7b-hf --output_dir exp/ua_gec --dataset ua_gec  \
+    --batch_size_training 1 --gradient_accumulation_steps 4 --num_epochs 1 --save_model
+```
+
+
 # English to Ukrainian Translation
 
 ![REPL Image](./docs/images/en-uk.png)

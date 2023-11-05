@@ -10,7 +10,7 @@ class samsum_dataset:
     train_split: str = "train"
     test_split: str = "validation"
     
-    
+
 @dataclass
 class grammar_dataset:
     dataset: str = "grammar_dataset"
@@ -38,5 +38,13 @@ class custom_dataset:
 class opus_paracrawl:
     dataset: str = "opus_paracrawl"
     file: str = "src/llama_recipes/datasets/opus_paracrawl.py"
+    train_split: str = "train"
+    test_split: str = "validation"
+
+
+@dataclass
+class ua_gec:
+    dataset: str = "ua_gec"
+    file: str = "src/llama_recipes/datasets/ua_gec.py"
     train_split: str = "train"
     test_split: str = "validation"
