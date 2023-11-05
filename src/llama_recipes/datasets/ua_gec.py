@@ -14,9 +14,9 @@ class UaGec(Dataset):
         self.fluency = Corpus(partition="train", annotation_layer="gec-fluency").get_documents()
         self.gec = Corpus(partition="train", annotation_layer="gec-only").get_documents()
         if split == "train":
-            self.dataset = ConcatDataset([Subset(self.gec, self.train), Subset(self.fluency, self.train)])
+            self.dataset = ConcatDataset([Subset(self.fluency, self.train)])
         else:
-            self.dataset = ConcatDataset([Subset(self.gec, self.dev), Subset(self.fluency, self.dev)])
+            self.dataset = ConcatDataset([Subset(self.fluency, self.dev)])
         self.tokenizer = tokenizer
 
     def __len__(self):
